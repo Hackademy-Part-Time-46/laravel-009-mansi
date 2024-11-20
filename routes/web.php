@@ -9,7 +9,7 @@ Route::get('/', [BookController::class, 'index'])
 Route::get('/create', [BookController::class, 'create'])
     ->name('books.create');
 
-Route::post('/store', [BookController::class, 'salva'])
+Route::post('/store', [BookController::class, 'store'])
     ->name('books.store');
 
 Route::get('/show/{book}', [BookController::class, 'show'])
