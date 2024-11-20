@@ -37,14 +37,14 @@ class BookController extends Controller
             $path_image = $request->file('image')->storePubliclyAs('public/images', $name_image);
 
             //Oppure Salva con nome generato random
-            //$path_image = $request->file('image')->storePublicly();
-
+            //$path_image = $request->file('image')->storePublicly(); 
         }
 
         $book = Book::create([
             "name" => $request->name,
             "pages" => $request->input('pages'),
             "years" => $request->years,
+            "alt_image" => $request->alt_image,
             'image' => $path_image
         ]);
         return to_route('books.index');

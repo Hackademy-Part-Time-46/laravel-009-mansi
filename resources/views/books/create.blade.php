@@ -15,6 +15,7 @@
         placeholder="Inserisci pagine libro">
     <input type="text" name="years" id="years" value="{{ old('years') }}" placeholder="Inserisci anno libro">
     <input type="file" name="image" id="image">
-
+    <input type="text" name="alt_image" id="alt_image" value="{{ old('alt_image') }}" required
+        placeholder="Inserisci didascalia immagine">
     <button type="submit">Crea</button>
 </form>
