@@ -24,6 +24,36 @@ class BookController extends Controller
 
     public function store(StoreBookRequest $request)
     {
+
+        // //Fino a Versione Laravel v11.22.0
+        // $path_image = '';
+        // if ($request->hasFile('image')) {
+        //     //Salva con il suo nome originale il file
+        //     $name_image = $request->file('image')->getClientOriginalName();
+        //     $path_image = $request->file('image')->storeAs('/images', $name_image);
+        //     //Oppure Salva con nome generato random
+        //     $path_image = $request->file('image')->store();
+        // }
+
+
+
+        //Da Versione Laravel v11.23.0 https://github.com/laravel/framework/releases/tag/v11.23.0
+        $path_image = '';
+        if ($request->hasFile('image')) {
+            //Salva con il suo nome originale il file
+            $name_image = $request->file('image')->getClientOriginalName();
+            $path_image = $request->file('image')->storePubliclyAs('/images', $name_image);
+            //Oppure Salva con nome generato random
+            //$path_image = $request->file('image')->storePublicly();
+        }
+
+
+
+
+
+
+
+
         //1) prendere il file
         //2) verificare che esista 
         //3) Salvare nel server la copia dell'immagine
@@ -52,6 +82,7 @@ class BookController extends Controller
 
     public function show(Book $book)
     {
+
         return view('books.show', ['book' => $book]);
     }
 }
